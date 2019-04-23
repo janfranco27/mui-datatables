@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Checkbox from '@material-ui/core/Checkbox';
+import Radio from '@material-ui/core/Radio';
 import TableCell from '@material-ui/core/TableCell';
 import { withStyles } from '@material-ui/core/styles';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
@@ -97,6 +98,20 @@ class TableSelectCell extends React.Component {
         // only display the header checkbox for multiple selection.
         return null;
       }
+      if (!isHeaderCell && selectableOn === 'single') {
+        return (
+          <Radio
+            classes={{
+              root: classes.checkboxRoot,
+              checked: classes.checked,
+              disabled: classes.disabled,
+            }}
+            disabled={!isRowSelectable}
+            {...otherProps}
+          />
+        );
+      }
+
       return (
         <Checkbox
           classes={{

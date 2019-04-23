@@ -1019,6 +1019,7 @@ class MUIDataTable extends React.Component {
 
   render() {
     const { classes, className, title } = this.props;
+    const { selectableRows } = this.options;
     const {
       announceText,
       activeColumn,
@@ -1042,7 +1043,7 @@ class MUIDataTable extends React.Component {
         elevation={this.options.elevation}
         ref={this.tableContent}
         className={classnames(classes.paper, className)}>
-        {selectedRows.data.length ? (
+        {selectedRows.data.length && selectableRows === 'multiple' ? (
           <TableToolbarSelect
             options={this.options}
             selectedRows={selectedRows}
